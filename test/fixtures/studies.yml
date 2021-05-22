@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  therapeutic_area: MyString
+  phase: 1
+  status: MyString
+  start_date: 2021-05-22 10:36:06
+  projected_end_date: 2021-05-22 10:36:06
+
+two:
+  title: MyString
+  therapeutic_area: MyString
+  phase: 1
+  status: MyString
+  start_date: 2021-05-22 10:36:06
+  projected_end_date: 2021-05-22 10:36:06
