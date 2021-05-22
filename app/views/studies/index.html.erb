@@ -1,0 +1,22 @@
+<h1>Study Management</h1>
+
+<table>
+  <tr>
+    <th> Title </th>
+    <th> Therapeutic Area </th>
+    <th> Phase </th>
+    <th> Status </th>
+    <th> Start End </th>
+    <th> Projected End Date </th>
+  </tr>
+  <% @studies.each do |study| %>
+    <tr>
+      <td> <%= study.title %> </td>
+      <td> <%= study.therapeutic_area %> </td>
+      <td> <%= study.phase %> </td>
+      <td> <%= study.status %> </td>
+      <td> <%= study.start_date %> </td>
+      <td> <%= study.projected_end_date %> </td>
+    </tr>
+  <% end %>
+</table>
