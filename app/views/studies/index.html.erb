@@ -1,5 +1,10 @@
-<h1>Study Management</h1>
+<div id="header" style="clear:both">
+  <h2 style="float: left">Study Management</h2>
+  <h2 style=" float: right; margin-left: 15px"> <%= link_to '+Add', new_study_path, class: "new-study" %></h2>
+</div>
 
+<div id="table_body">
+  <div id=table>
 <table>
   <tr>
     <th> Title </th>
@@ -10,13 +15,8 @@
     <th> Projected End Date </th>
   </tr>
   <% @studies.each do |study| %>
-    <tr>
-      <td> <%= study.title %> </td>
-      <td> <%= study.therapeutic_area %> </td>
-      <td> <%= study.phase %> </td>
-      <td> <%= study.status %> </td>
-      <td> <%= study.start_date %> </td>
-      <td> <%= study.projected_end_date %> </td>
-    </tr>
+    <%= render partial: 'study_row', locals: {study: study} %>
   <% end %>
 </table>
+  </div>
+</div>

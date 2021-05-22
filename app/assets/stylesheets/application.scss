@@ -1,0 +1,36 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+#header {
+    position:absolute;
+    left:10px;
+    height:400px;
+}
+
+#table_body {
+    top: 70px;
+    position:relative;
+}
+
+.new-study{
+    color: blue;
+}
+
+/*.inline.form { display: inline; background-color: }*/

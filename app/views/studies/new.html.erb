@@ -1,0 +1,72 @@
+<div class="title-container">
+  <h3> Create Study</h3>
+</div>
+
+<% if @study.errors.full_messages.present? %>
+  <% @study.errors.full_messages.each do |message| %>
+    <ul>
+      <li style="color: #c62531"><%= message %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+<%= form_with(model: @study, url: create_study_path, html: { class: "form-horizontal"}) do |f| %>
+
+       <div class="form-group">
+          <%= f.label "Title", class: "col-sm-1 control-label" %>
+         <div class="col-sm-11">
+          <%= f.text_field :title %>
+          </div>
+       </div>
+
+      <div class="form-group">
+        <%= f.label "Therapeutic Area", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+        <%= f.text_field :therapeutic_area %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Phase", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+        <%= f.number_field :phase %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Status", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+        <%= f.select :status, ['Planned', 'Preparation', 'Open', 'Execution', 'Completed', 'Closed', 'Hold', 'Stopped', 'Cancelled'] %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Start Date", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+        <%= f.text_field :start_date, type: "date" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Projected End Date".upcase_first, class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+        <%= f.text_field :projected_end_date, type: "date"%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-11 col-sm-offset-1">
+        <%= f.submit "SAVE" %>
+        </div>
+      </div>
+
+      <%=link_to 'Go Back', studies_index_path%>
+
+<% end %>
+</div>
+</div>
+
+
+<!--html: { :style => 'background-color:red; ' })-->
