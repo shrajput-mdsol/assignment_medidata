@@ -21,7 +21,6 @@ class StudiesController < ApplicationController
     end
   end
 
-  private
   def study_params
     params.require(:study).permit(:title, :therapeutic_area, :phase, :status, :start_date)
   end
