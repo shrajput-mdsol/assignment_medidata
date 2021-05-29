@@ -5,18 +5,19 @@
 
 <div id="table_body">
   <div id=table>
-<table>
-  <tr>
-    <th> Title </th>
-    <th> Therapeutic Area </th>
-    <th> Phase </th>
-    <th> Status </th>
-    <th> Start End </th>
-    <th> Projected End Date </th>
-  </tr>
-  <% @studies.each do |study| %>
-    <%= render partial: 'study_row', locals: {study: study} %>
-  <% end %>
-</table>
+    <table>
+      <tr>
+        <th> Title</th>
+        <th> Therapeutic Area</th>
+        <th> Phase</th>
+        <th> Status</th>
+        <th> Start End</th>
+        <th> Projected End Date</th>
+      </tr>
+      <% @studies.each do |study| %>
+        <%= render partial: 'study_row', locals: { study: study } %>
+      <% end %>
+    </table>
   </div>
+  <h5><%=link_to 'Go Back', root_path%></h5>
 </div>

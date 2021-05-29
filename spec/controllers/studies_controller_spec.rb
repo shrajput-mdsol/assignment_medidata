@@ -7,7 +7,7 @@ RSpec.describe StudiesController, type: :controller do
       let(:study_parameters) do
         { title: 'test title', therapeutic_area: 'test therapeutic area', status: 'Created', phase: 1 }
       end
-      it 'should return success message' do
+      it 'should return response status as 302' do
         post :create, params: { study: study_parameters }
         expect(response.body).eql? ''
         expect(response.status).to be 302

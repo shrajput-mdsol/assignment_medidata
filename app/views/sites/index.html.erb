@@ -1,0 +1,42 @@
+<div class="header-1">
+<div id="site-header" style="clear:both">
+  <h2 style="float: left">Site Management</h2>
+  <h2 style=" float: right; margin-left: 15px"> <%= link_to '+Add', new_site_path, class: "new-study" %></h2>
+</div>
+</div>>
+
+<div class="study-search">
+  <%= form_with(url: show_site_path(:id), method: :get, html: {style: 'font-size:16px', class: 'form-inline'}) do |f| %>
+    <%= f.label 'Select Study' %>
+    <%= f.select :id, Study.all.collect {|study| [study.title, study.id]},  {:include_blank => "--Choose--"}%>
+    <div class="btn btn-sm", style="display: inline">
+    <%= f.submit "GO" %>
+    </div>
+    <%#= f.submit 'ADD', form_action: new_site_path(study_id: :id) %>
+  <% end %>
+</div>
+
+<div id="site_table_body">
+  <div id=table>
+    <table>
+      <tr>
+        <th> Name</th>
+        <th> No Of Subjects</th>
+        <th> Site Open Date</th>
+        <th> Site Close Date</th>
+        <th> Screen Failure Rate</th>
+        <th> Address</th>
+      </tr>
+      <% if @sites.empty? %>
+        <tr>
+          <td colspan="6" style="text-align: center;"> No Sites Found</td>
+        </tr>
+      <% else %>
+        <% @sites.each do |site| %>
+          <%= render partial: 'site_row', locals: { site: site } %>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+  <h5><%= link_to 'Go Back', root_path %></h5>
+</div>

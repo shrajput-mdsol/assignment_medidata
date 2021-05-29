@@ -1,0 +1,78 @@
+<div class="title-container">
+  <h3> Create Site</h3>
+</div>
+
+<% if @site.errors.full_messages.present? %>
+  <% @site.errors.full_messages.each do |message| %>
+    <ul>
+      <li style="color: #c62531"><%= message %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_with(model: @site, url: create_site_path, html: { class: "form-horizontal"}) do |f| %>
+
+      <div class="form-group">
+        <%= f.label "Name", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.text_field :name %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "No Of Subjects", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.number_field :no_of_subjects %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Site Open Date", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.text_field :site_open_date, type: "date"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Site Close Date", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.text_field :site_close_date, type: "date" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Screen Failure Rate", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.number_field :screen_failure_rate %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Address", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.text_field :address %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Select Study", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.select :study_id, Study.all.collect {|study| [study.title, study.id]}, {:include_blank => "--Choose--"}%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-11 col-sm-offset-1">
+          <%= f.submit "SAVE" %>
+        </div>
+      </div>
+
+      <h5><%=link_to 'Go Back', sites_index_path%></h5>
+
+    <% end %>
+  </div>
+</div>
+
+<!--html: { :style => 'background-color:red; ' })-->

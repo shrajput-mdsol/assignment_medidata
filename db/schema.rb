@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_050606) do
+ActiveRecord::Schema.define(version: 2021_05_23_075324) do
+
+  create_table "sites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.integer "no_of_subjects"
+    t.datetime "site_open_date"
+    t.datetime "site_close_date"
+    t.decimal "screen_failure_rate", precision: 10
+    t.string "address"
+    t.bigint "study_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["study_id"], name: "index_sites_on_study_id"
+  end
 
   create_table "studies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
@@ -23,4 +36,5 @@ ActiveRecord::Schema.define(version: 2021_05_22_050606) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "sites", "studies"
 end
