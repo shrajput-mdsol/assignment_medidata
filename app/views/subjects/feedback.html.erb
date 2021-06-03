@@ -1,0 +1,31 @@
+<!--<div class="header-1">-->
+<!--  <div class="rating-header">-->
+<!--  <h2>Feedback Form</h2>-->
+<!--  </div>-->
+<!--</div>-->
+<div class="title-container" style="margin-left: 20px">
+  <h2>Feedback Form</h2>
+</div>
+
+<div class="rating-div">
+  <div class="panel-body">
+  <pre> Hello <b><i><%= @subject.name %></b></i>
+
+        Please provide your feedback for the drug <b><i><%= Study.find(Site.find(@subject.site_id).study_id).title %> </i></b>
+        You have undergone trial at <b><i><%= Site.find(@subject.site_id).name %></b></i>
+        <%= form_with(model: @subject, url: rate_by_subject_path) do |f|%>
+          <p>
+            <b>Rating</b>
+           <%= f.radio_button :rating, 'Happy' %> Happy
+           <%= f.radio_button :rating, 'Neutral' %> Neutral
+           <%= f.radio_button :rating, 'Sad' %> Sad
+            <%#= radio_button_tag :rating, '1' %><%#= label_tag :purpose_feedback, 'Happy' %>
+            <%#= radio_button_tag :rating, '2' %><%#= label_tag :purpose_prayer, 'Neutral' %>
+            <%#= radio_button_tag :rating, '3' %><%#= label_tag :purpose_praise, 'Sad' %>
+            <%= f.submit 'SUBMIT' %>
+          </p>
+        <% end %>
+        Thank you!
+ </pre>
+  </div>
+</div>

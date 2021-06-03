@@ -6,9 +6,9 @@
 </div>>
 
 <div class="study-search">
-  <%= form_with(url: show_site_path(:id), method: :get, html: {style: 'font-size:16px', class: 'form-inline'}) do |f| %>
+  <%= form_with(url: show_site_path(:study_id), method: :get, html: {style: 'font-size:16px', class: 'form-inline'}) do |f| %>
     <%= f.label 'Select Study' %>
-    <%= f.select :id, Study.all.collect {|study| [study.title, study.id]},  {:include_blank => "--Choose--"}%>
+    <%= f.select :study_id, Study.all.collect {|study| [study.title, study.id]},  {:include_blank => "--Choose--"}%>
     <div class="btn btn-sm", style="display: inline">
     <%= f.submit "GO" %>
     </div>

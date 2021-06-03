@@ -1,5 +1,6 @@
 class Site < ApplicationRecord
   belongs_to :study
+  has_many :subjects, dependent: :destroy
 
   validates :name, presence: true
   validates :no_of_subjects, numericality: true

@@ -1,0 +1,9 @@
+<tr>
+  <td> <%= subject.name %> </td>
+  <td> <%= subject.screening_no %> </td>
+  <td> <%= subject.status %> </td>
+  <td> <%= subject.enrollment_date %> </td>
+  <td> <%= subject.end_date %> </td>
+  <td> <%= subject.email %> </td>
+  <td> <%= link_to image_tag('rating.png', size: "30x30"), subject_feedback_path(subject.id), :style => 'text-align: center;' %> </td>
+</tr>

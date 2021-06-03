@@ -1,0 +1,85 @@
+<div class="title-container">
+  <h3> Create Subject </h3>
+</div>
+
+<% if @subject.errors.full_messages.present? %>
+  <% @subject.errors.full_messages.each do |message| %>
+    <ul>
+      <li style="color: #c62531"><%= message %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_with(model: @subject, url: create_subject_path, html: { class: "form-horizontal"}) do |f| %>
+
+      <div class="form-group">
+        <%= f.label "Name", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.text_field :name %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Screening No", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.number_field :screening_no %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Status", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.select :status, ['Screening', 'Screening Failed', 'Enrolled', 'Early Termination', 'Completed'] %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Enrollment Date", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.text_field :enrollment_date, type: "date"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "End Date", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.text_field :end_date, type: "date" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Select Study", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.select :study_id, Study.all.collect {|study| [study.title, study.id]}, {:include_blank => "--Choose--"}%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Select Site", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.select :site_id, Site.all.collect {|site| [site.name, site.id]}, {:include_blank => "--Choose--"}%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Email", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.email_field :email %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-11 col-sm-offset-1">
+          <%= f.submit "SAVE" %>
+        </div>
+      </div>
+
+      <h5><%=link_to 'Go Back', sites_index_path%></h5>
+
+    <% end %>
+  </div>
+</div>
+
+<!--html: { :style => 'background-color:red; ' })-->

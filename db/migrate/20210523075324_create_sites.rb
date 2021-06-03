@@ -8,7 +8,6 @@ class CreateSites < ActiveRecord::Migration[6.1]
       t.decimal :screen_failure_rate
       t.string :address
       t.references :study, null: false, foreign_key: true
-
       t.timestamps
     end
   end

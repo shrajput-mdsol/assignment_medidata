@@ -4,7 +4,7 @@ class SitesController < ApplicationController
   end
 
   def show
-    @sites = Site.where(study_id: params[:id])
+    @sites = Site.where(study_id: params[:study_id])
     render :index
   end
 

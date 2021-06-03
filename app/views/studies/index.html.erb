@@ -13,6 +13,8 @@
         <th> Status</th>
         <th> Start End</th>
         <th> Projected End Date</th>
+        <th> Edit </th>
+        <th> Delete </th>
       </tr>
       <% @studies.each do |study| %>
         <%= render partial: 'study_row', locals: { study: study } %>

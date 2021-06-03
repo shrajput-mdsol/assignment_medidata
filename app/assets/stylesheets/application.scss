@@ -10,7 +10,7 @@ table {
 
 td, th {
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: center;
     padding: 8px;
 }
 
@@ -34,6 +34,12 @@ tr:nth-child(even) {
   position:absolute;
 }
 
+.rating-div{
+  margin-left: 10px;
+  margin-top: 10px;
+  position: relative;
+}
+
 .study-search{
   margin-left: 10px;
   margin-top: 50px;
@@ -53,6 +59,13 @@ tr:nth-child(even) {
 
 .new-study{
     color: blue;
+}
+
+td img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 /*.inline.form { display: inline; background-color: }*/

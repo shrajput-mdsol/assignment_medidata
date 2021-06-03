@@ -1,0 +1,44 @@
+<div class="header-1">
+  <div id="site-header" style="clear:both">
+    <h2 style="float: left">Subject Management</h2>
+    <h2 style=" float: right; margin-left: 15px"> <%= link_to '+Add', new_subject_path, class: "new-study" %></h2>
+  </div>
+</div>>
+
+<div class="study-search">
+  <%= form_with(url: show_subjects_path(:site_id), method: :get, html: {style: 'font-size:16px'}) do |f| %>
+    <%= f.label 'Select Study' %>
+    <%= f.select :id, Study.all.collect {|study| [study.title, study.id] },  {:include_blank => "--Choose--"}%>
+    <%= f.label 'Select Site' %>
+    <%= f.select :site_id, Site.all.collect {|site| [site.name, site.id] },  {:include_blank => "--Choose--"}%>
+    <div class="btn btn-sm", style="display: inline">
+      <%= f.submit "GO" %>
+    </div>
+  <% end %>
+</div>
+
+<div id="site_table_body">
+  <div id=table>
+    <table>
+      <tr>
+        <th> Name </th>
+        <th> Screening No </th>
+        <th> Status </th>
+        <th> Enrolled Date </th>
+        <th> End Date </th>
+        <th> Email </th>
+        <th> Rate Drug </th>
+      </tr>
+      <% if @subjects.empty? %>
+        <tr>
+          <td colspan="7" style="text-align: center;"> No Subjects Found</td>
+        </tr>
+      <% else %>
+        <% @subjects.each do |subject| %>
+          <%= render partial: 'subject_row', locals: { subject: subject } %>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+  <h5><%= link_to 'Go Back', root_path %></h5>
+</div>
