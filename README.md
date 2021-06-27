@@ -1,8 +1,9 @@
 # README
+Putting the details about whats been implemented:
+
 A mini trial management application, which manages studies, sites and subjects.
 <img src="https://user-images.githubusercontent.com/70565430/123541589-f4dfb300-d762-11eb-8ddf-313a7e1fae84.png" width="400">
 
-Putting the details about whats been implemented
 Study Management: To manage create/delete/update studies
 <img src="https://user-images.githubusercontent.com/70565430/123541648-340e0400-d763-11eb-8659-143a37891afe.png" width="600">
 
