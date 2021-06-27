@@ -1,0 +1,2 @@
+<p> Hello <%= @subject.name %>, You have been successfully added to
+  Study: <%= Study.find(Site.find(@subject.site_id).study_id).title %></p>
