@@ -1,21 +1,24 @@
 <div class="header-1">
-<div id="site-header" style="clear:both">
-  <h2 style="float: left">Site Management</h2>
-  <h2 style=" float: right; margin-left: 15px"> <%= link_to '+Add', new_site_path, class: "new-study" %></h2>
-</div>
+  <div id="site-header" style="clear:both">
+    <h2 style="float: left">Site Management</h2>
+    <h2 style=" float: right; margin-left: 15px"> <%= link_to '+Add', new_site_path, class: "new-study" %></h2>
+  </div>
 </div>>
 
 <div class="study-search">
-  <%= form_with(url: show_site_path(:study_id), method: :get, html: {style: 'font-size:16px', class: 'form-inline'}) do |f| %>
+  <%= form_with(url: show_site_path(:study_id), method: :get, html: { style: 'font-size:16px', class: 'form-inline' }) do |f| %>
     <%= f.label 'Select Study' %>
-    <%= f.select :study_id, Study.all.collect {|study| [study.title, study.id]},  {:include_blank => "--Choose--"}%>
-    <div class="btn btn-sm", style="display: inline">
-    <%= f.submit "GO" %>
+    <%= f.select :study_id, Study.all.collect { |study| [study.title, study.id] }, { :include_blank => "--Choose--" } %>
+    <div class="btn btn-sm" , style="display: inline">
+      <%= f.submit "GO" %>
     </div>
     <%#= f.submit 'ADD', form_action: new_site_path(study_id: :id) %>
   <% end %>
 </div>
-
+<div style="margin-left: 10px;color: #666666">
+  <%= label_tag 'Study:' %>
+  <%= @study_id.empty? ? '' : Study.find(@study_id).title %>
+</div>
 <div id="site_table_body">
   <div id=table>
     <table>
@@ -26,10 +29,12 @@
         <th> Site Close Date</th>
         <th> Screen Failure Rate</th>
         <th> Address</th>
+        <th> Edit</th>
+        <th> Delete</th>
       </tr>
       <% if @sites.empty? %>
         <tr>
-          <td colspan="6" style="text-align: center;"> No Sites Found</td>
+          <td colspan="8" style="text-align: center;"> No Sites Found</td>
         </tr>
       <% else %>
         <% @sites.each do |site| %>
@@ -39,4 +44,9 @@
     </table>
   </div>
   <h5><%= link_to 'Go Back', root_path %></h5>
+  <% flash.each do |type, msg| %>
+    <div style="color: green; font-family: 'Comic Sans MS'; margin-left: 300px">
+      <%= msg %>
+    </div>
+  <% end %>
 </div>

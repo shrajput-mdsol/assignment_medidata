@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_30_191222) do
+ActiveRecord::Schema.define(version: 2021_06_19_131307) do
 
   create_table "sites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.integer "no_of_subjects"
+    t.integer "no_of_subjects", default: 0
     t.datetime "site_open_date"
     t.datetime "site_close_date"
     t.decimal "screen_failure_rate", precision: 10
@@ -32,8 +32,10 @@ ActiveRecord::Schema.define(version: 2021_05_30_191222) do
     t.string "status"
     t.datetime "start_date"
     t.datetime "projected_end_date"
+    t.integer "no_of_subjects", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "redacted", default: false
   end
 
   create_table "subjects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -43,11 +45,11 @@ ActiveRecord::Schema.define(version: 2021_05_30_191222) do
     t.string "status"
     t.datetime "enrollment_date"
     t.datetime "end_date"
+    t.string "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email"
-    t.boolean "active"
-    t.string "rating"
+    t.boolean "active", default: true
     t.index ["site_id"], name: "index_subjects_on_site_id"
   end
 

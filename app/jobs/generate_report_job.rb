@@ -1,59 +1,15 @@
-class StudiesController < ApplicationController
-  def root
-  end
+require 'open-uri'
+class GenerateReportJob < ApplicationJob
+  queue_as :default
 
-  def index
-    @studies = Study.all
-  end
-
-  def new
-    @study = Study.new
-  end
-
-  def create
-    @study = Study.new(study_params)
-    if @study.save
-      redirect_to studies_index_path, notice: 'Study added...'
-    else
-      render :new
-    end
-  end
-
-  def destroy
-    @study = Study.find(params[:id])
-    if @study.destroy
-      redirect_to studies_index_path
-    else
-      render plain: 'cant be deleted'
-    end
-  end
-
-  def edit
-    @study = Study.find(params[:id])
-  end
-
-  def update
-    @study = Study.find(params[:id])
-    if @study.update(study_params)
-      redirect_to studies_index_path
-    else
-      render :edit
-    end
-  end
-
-  def report
-    study = Study.find(params[:id])
-    # GenerateReportJob.perform_later(study)
-    put_report_content(study)
+  def perform(*args)
+    Rails.logger.info "*********Inside Perform******** #{args} And #{args.class}"
+    put_report_content(args[0])
     File.write("#{Rails.root}/app/assets/docs/drug_report.txt", put_report_content(study))
-    send_file "#{Rails.root}/app/assets/docs/drug_report.txt", type: "application/pdf", x_sendfile: true, filename: "#{study.title}_drug_report.txt"
+    # send_file "#{Rails.root}/app/assets/docs/drug_report.txt", type: "application/pdf", x_sendfile: true, filename: "#{args[0].title}_drug_report.txt"
   end
 
   private
-
-  def study_params
-    params.require(:study).permit(:title, :therapeutic_area, :phase, :status, :start_date, :projected_end_date, :no_of_subjects)
-  end
 
   def put_report_content(study)
     site_names = study.sites.pluck(:name)
@@ -73,10 +29,9 @@ class StudiesController < ApplicationController
     "Drug Report For Study: #{study.title}\nTherapeutic Area: #{study.therapeutic_area}\nPhase: #{study.phase}\nTotal no of sites: #{study.sites.size}\nTotal no of subjects: #{study.no_of_subjects}" +
       "\n\n***** Associated Sites *****\n#{site_names.join("\n")}" +
       "\n\n***** Associated Subjects *****\n#{subject_names.join("\n")}" +
-      "\n\n***** Percentage Feedback *****" +
+      "\n\n***** Pecentage Feedback *****" +
       "\nHappy Percentage : #{happy_percentage}" +
       "\nSad Percentage : #{sad_percentage}" +
       "\nNeutral Percentage : #{neutral_percentage}"
   end
 end
-

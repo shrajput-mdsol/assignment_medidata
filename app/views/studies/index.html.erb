@@ -10,11 +10,13 @@
         <th> Title</th>
         <th> Therapeutic Area</th>
         <th> Phase</th>
-        <th> Status</th>
         <th> Start End</th>
         <th> Projected End Date</th>
+        <th> No Of Subjects</th>
+        <th> Redacted </th>
         <th> Edit </th>
         <th> Delete </th>
+        <th> Generate Report </th>
       </tr>
       <% @studies.each do |study| %>
         <%= render partial: 'study_row', locals: { study: study } %>
@@ -22,4 +24,9 @@
     </table>
   </div>
   <h5><%=link_to 'Go Back', root_path%></h5>
+  <% flash.each do |type, msg|%>
+    <div style="color: green; margin-left: 300px">
+      <%= msg %>
+    </div>
+  <% end %>
 </div>

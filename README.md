@@ -15,5 +15,5 @@ Subject Management: To manage create/delete/update subjects
 <img src="https://user-images.githubusercontent.com/70565430/123541761-cca48400-d763-11eb-9dc4-4220718b9032.png" width="600">
 
 Rating feature: Provides subjects an option to submit their feedback for the drug they are being trialled.
-<img src="https://user-images.githubusercontent.com/70565430/123541842-0b3a3e80-d764-11eb-8a85-7c852d5e004f.png" width="600">
+<img src="https://user-images.githubusercontent.com/70565430/123541842-0b3a3e80-d764-11eb-8a85-7c852d5e004f.png" width="300">
 

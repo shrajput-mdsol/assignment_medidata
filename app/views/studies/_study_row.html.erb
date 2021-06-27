@@ -2,9 +2,15 @@
   <td> <%= study.title %> </td>
   <td> <%= study.therapeutic_area %> </td>
   <td> <%= study.phase %> </td>
-  <td> <%= study.status %> </td>
   <td> <%= study.start_date %> </td>
   <td> <%= study.projected_end_date %> </td>
+  <td> <%= study.no_of_subjects %> </td>
+  <% if study.redacted.eql? true %>
+    <td> <%= link_to image_tag("red.png", size: "20x20") %></td>
+  <% else %>
+    <td> <%= link_to image_tag("green.png", size: "20x20") %></td>
+  <% end %>
   <td> <%= link_to image_tag("edit.png", :size => "20x20"), edit_study_path(study.id) %> </td>
-  <td> <%= link_to image_tag("delete.png", :size => "20x20"), delete_study_path(study.id), data: {confirm: 'All the associated sites and subjects will be deleted. Confirm delete?'} %> </td>
+  <td> <%= link_to image_tag("delete.png", :size => "20x20"), delete_study_path(study.id), data: { confirm: 'All the associated sites and subjects will be deleted. Confirm delete?' } %> </td>
+  <td> <%= link_to image_tag("report.png", :size => "30x30"), generate_report_path(study.id) %> </td>
 </tr>

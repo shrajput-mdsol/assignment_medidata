@@ -35,12 +35,13 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <%= f.label "Status", class: "col-sm-1 control-label" %>
-        <div class="col-sm-11">
-          <%= f.select :status, ['Planned', 'Preparation', 'Open', 'Execution', 'Completed', 'Closed', 'Hold', 'Stopped', 'Cancelled'] %>
-        </div>
-      </div>
+<!--      <div class="form-group">-->
+        <%#= f.label "Status", class: "col-sm-1 control-label" %>
+<!--        <div class="col-sm-11">-->
+          <%#= f.select :status, ['Planned', 'Preparation', 'Open', 'Execution', 'Completed', 'Closed', 'Hold', 'Stopped', 'Cancelled'] %>
+          <%#= f.select :status, ['Not Started', 'In Progress', 'Completed'] %>
+<!--        </div>-->
+<!--      </div>-->
 
       <div class="form-group">
         <%= f.label "Start Date", class: "col-sm-1 control-label" %>
@@ -56,6 +57,12 @@
         </div>
       </div>
       <%#= f.text_field :projected_end_date, type: "date"%>
+      <div class="form-group">
+        <%= f.label "No Of Subjects", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.number_field :no_of_subjects %>
+        </div>
+      </div>
 
       <div class="form-group">
         <div class="col-sm-11 col-sm-offset-1">

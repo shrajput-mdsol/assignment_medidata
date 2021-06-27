@@ -1,0 +1,72 @@
+<div class="title-container">
+  <h3> Edit Subject</h3>
+</div>
+
+<% if @subject.errors.full_messages.present? %>
+  <ul>
+    <% @subject.errors.full_messages.each do |error_msg| %>
+      <li style="color: #B00100"> <%= error_msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_with(model: @subject, url: update_sub_path, html: { class: "form-horizontal" }) do |f| %>
+
+      <div class="form-group">
+        <%= f.label "Name", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.text_field :name %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Screening No", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.number_field :screening_no %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Status", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.select :status, ['Screening', 'Screening Failed', 'Enrolled', 'Early Termination', 'Completed'] %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Enrollment Date", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.date_field :enrollment_date, as: :date, value: @subject.enrollment_date.to_s.try(:strftime, '%m/%d/%Y') %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "End Date", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.date_field :end_date, as: :date, value: @subject.end_date.to_s.try(:strftime, '%m/%d/%Y') %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Email", class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= f.email_field :email %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-11 col-sm-offset-1">
+          <%= f.submit "UPDATE" %>
+        </div>
+      </div>
+
+      <h5><%= link_to 'Go Back', subjects_index_path %></h5>
+
+    <% end %>
+  </div>
+</div>
+
+
+

@@ -5,4 +5,6 @@
   <td> <%= site.site_close_date %> </td>
   <td> <%= site.screen_failure_rate %> </td>
   <td> <%= site.address %> </td>
+  <td> <%= link_to image_tag("edit.png", :size => "20x20"), edit_site_path(site.id) %> </td>
+  <td> <%= link_to image_tag("delete.png", :size => "20x20"), delete_site_path(site.id), data: {confirm: 'All subjects will be deleted. Confirm delete?'} %> </td>
 </tr>

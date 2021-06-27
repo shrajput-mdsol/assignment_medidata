@@ -50,13 +50,6 @@
       </div>
 
       <div class="form-group">
-        <%= f.label "Select Study", class: "col-sm-1 control-label" %>
-        <div class="col-sm-11">
-          <%= f.select :study_id, Study.all.collect {|study| [study.title, study.id]}, {:include_blank => "--Choose--"}%>
-        </div>
-      </div>
-
-      <div class="form-group">
         <%= f.label "Select Site", class: "col-sm-1 control-label" %>
         <div class="col-sm-11">
           <%= f.select :site_id, Site.all.collect {|site| [site.name, site.id]}, {:include_blank => "--Choose--"}%>

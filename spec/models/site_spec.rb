@@ -23,5 +23,3 @@ RSpec.describe Site, type: :model do
     end
   end
 end
-#Validation failed: Study must exist
-# Validation failed: Study must exist

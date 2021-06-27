@@ -5,40 +5,80 @@
   </div>
 </div>>
 
+<!--<div class="study-search">-->
+<%#= form_with(url: show_subjects_path(:site_id), method: :get, html: { style: 'font-size:16px' }) do |f| %>
+<%#= f.label 'Select Study' %>
+<%#= f.select :id, Study.all.collect { |study| [study.title, study.id] }, { :include_blank => "--Choose--" } %>
+<%#= f.label 'Select Site' %>
+<%#= f.select :site_id, Site.all.collect { |site| [site.name, site.id] }, { :include_blank => "--Choose--" } %>
+<!--    <div class="btn btn-sm" , style="display: inline">-->
+<%#= f.submit "GO" %>
+<!--    </div>-->
+<%# end %>
+<!--</div>-->
+
 <div class="study-search">
-  <%= form_with(url: show_subjects_path(:site_id), method: :get, html: {style: 'font-size:16px'}) do |f| %>
-    <%= f.label 'Select Study' %>
-    <%= f.select :id, Study.all.collect {|study| [study.title, study.id] },  {:include_blank => "--Choose--"}%>
+  <%= form_with(url: show_subjects_path(:site_id), method: :get, html: { style: 'font-size:16px' }) do |f| %>
     <%= f.label 'Select Site' %>
-    <%= f.select :site_id, Site.all.collect {|site| [site.name, site.id] },  {:include_blank => "--Choose--"}%>
-    <div class="btn btn-sm", style="display: inline">
+    <%= f.select :site_id, Site.all.collect { |site| [site.name, site.id] }, { :include_blank => "--Choose--" } %>
+    <div class="btn btn-sm" , style="display: inline">
       <%= f.submit "GO" %>
     </div>
   <% end %>
+</div>
+
+<div style="margin-left: 10px; color: #666666; clear: both; position: absolute">
+  <div style="float: left">
+  <%= label_tag 'Study:' %>
+  <%= @site_id.empty? ? '' : Study.find(Site.find(@site_id).study_id).title%>
+  </div>
+
+  <div style="float: right;margin-left: 15px">
+    <%= label_tag 'Expected No Of Subjects:' %>
+    <%= @site_id.empty? ? '': Study.find(Site.find(@site_id).study_id).no_of_subjects%>
+  </div>
+
+  <div style="float: left; margin-left: 15px">
+    <%= label_tag 'Site:'%>
+    <%= @site_id.empty? ? '' : Site.find(@site_id).name%>
+  </div>
 </div>
 
 <div id="site_table_body">
   <div id=table>
     <table>
       <tr>
-        <th> Name </th>
-        <th> Screening No </th>
-        <th> Status </th>
-        <th> Enrolled Date </th>
-        <th> End Date </th>
-        <th> Email </th>
-        <th> Rate Drug </th>
+        <th> Name</th>
+        <th> Screening No</th>
+        <th> Status</th>
+        <th> Enrolled Date</th>
+        <th> End Date</th>
+        <th> Email</th>
+        <th> Rate Drug</th>
+        <th> Active </th>
+        <th> Edit</th>
+        <th> Delete</th>
       </tr>
       <% if @subjects.empty? %>
         <tr>
-          <td colspan="7" style="text-align: center;"> No Subjects Found</td>
+          <td colspan="10" style="text-align: center;"> No Subjects Found</td>
         </tr>
       <% else %>
         <% @subjects.each do |subject| %>
-          <%= render partial: 'subject_row', locals: { subject: subject } %>
+          <% if subject.rating.nil? %>
+            <%= render partial: 'subject_row', locals: { subject: subject, rating: false } %>
+          <% else %>
+            <%= render partial: 'subject_row', locals: { subject: subject, rating: true } %>
+          <% end %>
         <% end %>
       <% end %>
     </table>
   </div>
   <h5><%= link_to 'Go Back', root_path %></h5>
+
+  <% flash.each do |type, msg| %>
+    <div style="color: green; font-family: 'Comic Sans MS'; margin-left: 300px">
+      <%= msg %>
+    </div>
+  <% end %>
 </div>

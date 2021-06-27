@@ -1,0 +1,52 @@
+<div class="title-container" style="margin-left: 10px">
+  <h3>Trial Progress</h3>
+</div>
+
+<div class="panel panel-default" style="margin-left: 10px">
+  <%= form_with(url: show_progress_path(:study_id), method: :get) do |f| %>
+    <%= f.label 'Select Study' %>
+    <%= f.select :study_id, Study.all.collect { |study| [study.title, study.id] }, { :include_blank => "--Choose--" } %>
+    <%= f.submit 'GO' %>
+  <% end %>
+  </br>
+
+  <div style="margin-left: 10px">
+    <%= label_tag 'site_count', 'No Of Sites:' %>
+    <%= text_field_tag 'site_count', @study.sites.size %>
+    </br>
+    <%= label_tag 'subject_count', 'No Of Subjects Required:' %>
+    <%= text_field_tag 'subject_count', @study.no_of_subjects %>
+    </br>
+    <%= label_tag 'sub_count', 'No Of Subjects Added To Sites:' %>
+    <%= text_field_tag 'sub_count', @subject_count_at_sites %>
+    </br>
+    <%= label_tag 'trial_status', 'Trial Status:' %>
+    <%= text_field_tag 'sub_count', @status %>
+    </br>
+
+    <% if @status == 'Completed' %>
+      <p> Happy Percentage: <%= @happy_percentage %> %</p>
+      <% if @happy_percentage > 70 %>
+        <%= form_with url: mark_complete_path(@study.id), method: :patch do |form| %>
+          <%= form.label :p1, "Study phase will be incremented & Trialled subjects will be deactivated on Mark Complete" %>
+          </br>
+          <%= form.submit "Mark Complete" %>
+        <% end %>
+      <% end %>
+    <% elsif @status == 'Not Started' %>
+      <p> Happy Percentage: NA </p>
+    <% end %>
+
+    <% flash.each do |type, msg| %>
+      <div style="color: green; font-family: 'Comic Sans MS'; margin-left: 300px">
+        <%= msg %>
+      </div>
+    <% end %>
+
+    <%#= link_to 'Mark the trial as complete', show_status_path %>
+
+  </div>
+</div>
+
+
+

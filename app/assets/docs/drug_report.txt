@@ -1,21 +1,16 @@
-Drug Report For Study: StudyMain
-Therapeutic Area: Cardiovascula
-Phase: 5
-Total no of sites: 2
-Total no of subjects: 5
+Drug Report For Study: StudyParam
+Therapeutic Area: 1
+Phase: 0
+Total no of sites: 0
+Total no of subjects: 10
 
 ***** Associated Sites *****
-SiteMain1
-SiteMain2
+
 
 ***** Associated Subjects *****
-SubMain1
-SubMain2
-DarshMain
-Subjecttt
-SubMain2
 
-***** Pecentage Feedback *****
-Happy Percentage : 80.0
+
+***** Percentage Feedback *****
+Happy Percentage : 0.0
 Sad Percentage : 0.0
-Neutral Percentage : 20.0
+Neutral Percentage : 0.0

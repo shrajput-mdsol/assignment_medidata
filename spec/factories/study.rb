@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :study do
-    title {'Test Study'}
+    title {Faker::Name.name + "Study" }
     therapeutic_area {'Test Therapeutic Area'}
     phase {2}
     status {'Stopped'}

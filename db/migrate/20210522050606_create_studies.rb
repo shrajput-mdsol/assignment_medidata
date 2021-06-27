@@ -7,6 +7,7 @@ class CreateStudies < ActiveRecord::Migration[6.1]
       t.string :status
       t.datetime :start_date
       t.datetime :projected_end_date
+      t.integer :no_of_subjects, :default => 0
       t.timestamps
     end
   end

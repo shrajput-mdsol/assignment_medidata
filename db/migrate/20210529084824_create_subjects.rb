@@ -7,7 +7,7 @@ class CreateSubjects < ActiveRecord::Migration[6.1]
       t.string :status
       t.datetime :enrollment_date
       t.datetime :end_date
-
+      t.string :rating
       t.timestamps
     end
   end
